@@ -1,0 +1,336 @@
+''' load up the puzzle '''
+def TwoD(string):
+    y = []
+    for x in string:
+        
+        y.append(x)
+        
+    z.append(y)
+    
+''' print the puzzle '''
+def display(z = []):
+    for x in range(len(z)):
+        for y in z[x]:
+             print(y,end = ' ')
+        print()
+''' load up crossword '''   
+def loadCx(val = []):
+    for x in val:
+        TwoD(x)
+    
+''' right check '''
+def right(row, col, myStr):
+    x = row
+    y = col
+    ch = ''
+    count = 0
+    try:
+        for xx in myStr:
+            ch = z[x][y]
+            if xx == ch:
+                match1 = True
+                count = count + 1
+                y = y+1
+                if (count == int(len(myStr))):
+                    match1 = True
+                    return match1
+                                   
+            else:
+                match1 = False
+                return match1
+                
+    except Exception as e:
+        print("Range issues!")
+        match1 = False
+        return match1
+        
+''' left check '''
+def left(row, col, myStr = ' '):
+    x = row
+    y = col
+    ch = ''
+    count = 0
+    try:
+        for xx in myStr:
+            ch = z[x][y]
+            if xx == ch:
+               
+                match1 = True
+                count = count + 1
+                y = y-1
+                if (count == int(len(myStr))):
+                    match1 = True
+                    return match1
+                                   
+            else:
+                match1 = False
+                return match1
+                
+    except Exception as e:
+        print("Range issues!")
+        match1 = False
+        return match1
+   
+
+''' up check '''
+def up(row, col, myStr = ' '):
+    x = row
+    y = col
+    ch = ''
+    count = 0
+    try:
+        for xx in myStr:
+            ch = z[x][y]
+            if xx == ch:
+               
+                match1 = True
+                count = count + 1
+                x = x-1
+                if (count == int(len(myStr))):
+                    match1 = True
+                    return match1
+                                   
+            else:
+                match1 = False
+                return match1
+                
+    except Exception as e:
+        print("Range issues!")
+        match1 = False
+        return match1
+    
+
+''' down check '''
+def down(row, col, myStr = ' '):
+    x = row
+    y = col
+    ch = ''
+    count = 0
+    try:
+        for xx in myStr:
+            ch = z[x][y]
+            if xx == ch:
+               
+                match1 = True
+                count = count + 1
+                x = x+1
+                if (count == int(len(myStr))):
+                    match1 = True
+                    return match1
+                                   
+            else:
+                match1 = False
+                return match1
+                
+    except Exception as e:
+        print("Range issues!")
+        match1 = False
+        return match1
+   
+''' left up diagonal '''
+def l_up_diag(row, col, myStr = ' '):
+    x = row
+    y = col
+    ch = ''
+    count = 0
+    try:
+        for xx in myStr:
+            ch = z[x][y]
+            if xx == ch:
+               
+                match1 = True
+                count = count + 1
+                x = x - 1
+                y = y - 1
+                if (count == int(len(myStr))):
+                    match1 = True
+                    return match1
+                                   
+            else:
+                match1 = False
+                return match1
+                
+    except Exception as e:
+        print("Range issues!")
+        match1 = False
+        return match1
+    
+''' left down diagonal '''
+def l_dn_diag(row, col, myStr = ' '):
+    x = row
+    y = col
+    ch = ''
+    count = 0
+    try:
+        for xx in myStr:
+            ch = z[x][y]
+            if xx == ch:
+               
+                match1 = True
+                count = count + 1
+                x = x + 1
+                y = y - 1
+                if (count == int(len(myStr))):
+                    match1 = True
+                    return match1
+                                   
+            else:
+                match1 = False
+                return match1
+                
+    except Exception as e:
+        print("Range issues!")
+        match1 = False
+        return match1
+''' righ up diagonal '''
+def r_dn_diag(row, col, myStr = ' '):
+    x = row
+    y = col
+    ch = ''
+    count = 0
+    try:
+        for xx in myStr:
+            ch = z[x][y]
+            if xx == ch:
+               
+                match1 = True
+                count = count + 1
+                x = x + 1
+                y = y + 1
+                if (count == int(len(myStr))):
+                    match1 = True
+                    return match1
+                                   
+            else:
+                match1 = False
+                return match1
+                
+    except Exception as e:
+        print("Range issues!")
+        match1 = False
+        return match1
+''' right down diagonal '''
+def r_up_diag(row, col, myStr = ' '):
+    x = row
+    y = col
+    ch = ''
+    count = 0
+    try:
+        for xx in myStr:
+            ch = z[x][y]
+            if xx == ch:
+               
+                match1 = True
+                count = count + 1
+                x = x - 1
+                y = y + 1
+                if (count == int(len(myStr))):
+                    match1 = True
+                    return match1
+                                   
+            else:
+                match1 = False
+                return match1
+                
+    except Exception as e:
+        print("Range issues!")
+        match1 = False
+        return match1
+
+''' get the coords '''
+
+def coords(myStr):
+    col = 0
+    
+    for x in z:
+        col = 0
+        for y in x:
+            
+            if(y == myStr):
+                coord.append(z.index(x)) # row index
+                coord.append(col) # column index
+                col = col + 1
+            else:
+                col = col + 1
+                
+''' search functions '''
+
+def Search(row, col, myStr):
+
+   
+    match1 = right(row, col, myStr)
+    if not match1:
+        match1 = left(row, col, myStr)
+    if not match1:
+        match1 = up(row, col, myStr)
+    if not match1:
+        match1 = down(row, col, myStr)
+    if not match1:
+        match1 = r_up_diag(row, col, myStr)
+    if not match1:
+        match1 = r_dn_diag(row, col, myStr)
+    if not match1:
+        match1 = l_up_diag(row, col, myStr)
+    if not match1:
+        match1 = l_dn_diag(row, col, myStr)
+    
+    return match1
+        
+a = "YMTRLCHOCOLATE"
+b = "ASKCARTESOOMET"
+c = "PYVANILLASNOTE"
+d = "MKDETDEACFANAA"
+e = "CATNLINNAOCOOE"
+f = "OKPOAAGODKEAET"
+g = "ECULNCAEFOPLRN"
+h = "DOTAEENORYWEEE"
+i = "OCBOAWYOTTEOIE"
+j = "COIEAAARTSAOAR"
+k = "RNTTCRALETNIAG"
+l = "EEGDUFOSNIOVLT"
+m = "DAORYKCORUACGT"
+n = "AEETUNOCOCTPES"
+
+val = [a,b,c,d,e,f,g,h,i,j,k,l,m,n]
+
+coord = [] # first letter coords
+y = []
+z = [] # 2D array puzzle
+row = 0
+col = 0
+word = 'GREENTEA'
+status = 'WORD NOT FOUND!'
+match1 = False
+
+''' load up crossword '''
+loadCx(val)
+
+''' display Xword '''
+display(z)
+
+''' find coords '''
+coords(word[0])
+
+''' search functions '''
+indexRow = 0
+indexCol = 1
+
+
+for x in range(int(len(coord)/2)):
+    row = coord[indexRow]
+    col = coord[indexCol]
+    
+    match1 = Search(row, col, word)
+    
+    if(match1):
+        status = 'status: WORD FOUND!!'
+        
+        break
+    else:
+        indexRow = indexRow + 2
+        indexCol = indexCol + 2
+        
+
+print(status, end = ' ')
+print('@Coordinate: (',row,',', col,')')
+print(match1)
